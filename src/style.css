@@ -1,0 +1,50 @@
+/* My custom styles */
+
+body {
+    background: #faf6b5;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+}
+
+.mainheader {
+    font-family: 'Sigmar One', cursive;
+    font-size: 24px;
+    color: #95250a;
+    text-shadow: 2px 2px 5px #fce2dc
+}
+
+#searchBtn {
+    color: white;
+    background-color: #816b04;
+}
+
+.resultsheader {
+    font-family: 'Sigmar One', cursive;
+    font-size: 20px;
+    color: #95250a;
+    text-shadow: 2px 2px 5px #fce2dc
+}
+
+.card {
+    width: 18rem;
+    background-color: lightskyblue;
+}
+
+.avatar {
+    border: 10px solid #fff;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+}
+
+.user-info {
+    margin-left: 2rem;
+}
+
+.card-title {
+    margin-top: 0;
+}
+
+.hidden {
+    visibility: hidden;
+}
