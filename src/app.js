@@ -87,8 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             <li><strong>Twitter:</strong> ${user.twitter_username}</li>
                             <li><strong>Location:</strong> ${user.location}</li>
                         </ul>
-                        <button type="button" id="reposToggle" class="btn btn-secondary">Repos</button> <a href="${user.html_url}" class="btn btn-primary" target="_blank">Visit</a>
-                        <div id="myCollapse" class="collapse show">
+                        <button type="button" class="btn btn-secondary" id="myBtn">Repos</button> <a href="${user.html_url}" class="btn btn-primary" target="_blank">Visit</a>
+                        <div id="myCollapse" class="collapse">
                             <div id="reposlist" class="card card-body">
                             (repos list here...)
                             </div>
@@ -112,15 +112,18 @@ document.addEventListener('DOMContentLoaded', () => {
         form.reset();
     });
 
-    // From the Bootstrap Components docs (collapse/expand)
-    const btn = document.getElementById("reposToggle");
-    const el = document.getElementById("myCollapse");
+    /* From Bootstrap 5 Components docs (collapse/expand)
+    const collapseElementList = document.querySelectorAll('.collapse')
+    const collapseList = [...collapseElementList].map(collapseEl => new bootstrap.Collapse(collapseEl)) */
+
+    const btn = document.getElementById("myBtn");
+    const element = document.getElementById("myCollapse");
 
     // Create a collapse instance, toggles the collapse element on invocation
-    const myCollapse = new bootstrap.Collapse(el);
+    const myCollapse = new bootstrap.Collapse(element);
 
     btn.addEventListener("click", () => {
         myCollapse.toggle();
-    })
+    });
 
 })
