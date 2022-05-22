@@ -87,10 +87,12 @@ document.addEventListener('DOMContentLoaded', () => {
                             <li><strong>Twitter:</strong> ${user.twitter_username}</li>
                             <li><strong>Location:</strong> ${user.location}</li>
                         </ul>
-                        <a class="btn btn-secondary" href="#" role="button">Repos</a> 
-                        <!-- <a class="btn btn-primary" href="#" role="button"><i class="bi bi-heart"></i></a> --> <a href="${user.html_url}" class="btn btn-primary" target="_blank">Visit</a>
-                    <ul id="reposlist"></ul>
-                </div>
+                        <button type="button" id="reposToggle" class="btn btn-secondary">Repos</button> <a href="${user.html_url}" class="btn btn-primary" target="_blank">Visit</a>
+                        <div id="myCollapse" class="collapse show">
+                            <div id="reposlist" class="card card-body">
+                            (repos list here...)
+                            </div>
+                        </div>
             </div>
         `;
 
@@ -101,8 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     form.addEventListener("submit", (e) => {
         e.preventDefault();
-        // e.target.value
-        // What is "e.target.value"? (button)
         console.log(e.target)
         const user = search.value;
         if (user) {
@@ -112,5 +112,15 @@ document.addEventListener('DOMContentLoaded', () => {
         form.reset();
     });
 
+    // From the Bootstrap Components docs (collapse/expand)
+    const btn = document.getElementById("reposToggle");
+    const el = document.getElementById("myCollapse");
+
+    // Create a collapse instance, toggles the collapse element on invocation
+    const myCollapse = new bootstrap.Collapse(el);
+
+    btn.addEventListener("click", () => {
+        myCollapse.toggle();
+    })
 
 })
