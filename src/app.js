@@ -21,8 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const notFoundText = document.getElementById('notfound-message')
     notFound.className = 'hidden'
 
-    // getUser("adriculous");
-
     function getUser(username) {
         return fetch(API_URL + username, {
             method: "GET",
@@ -42,8 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => { err.setAttribute('class', 'hidden') }, 3000)
             })
 
-        /* function getRepos(username) {
-            return fetch(API_URL + username + "/repos", {
+        function getRepos(username) {
+            fetch(API_URL + username + "/repos", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -63,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 repoEl.innerText = repo.name;
                 reposEle.appendChild(repoEl);
             })
-        } */
+        }
 
         function makeUserCard(user) {
             const profileCard = `
@@ -81,8 +79,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             <li><strong>Twitter:</strong> ${user.twitter_username}</li>
                             <li><strong>Location:</strong> ${user.location}</li>
                         </ul>
-                        <a class="btn btn-primary" href="#" role="button"><i class="bi bi-heart"></i></a> <a href="${user.html_url}" class="btn btn-primary" target="_blank">Visit</a>
-                    <div id="reposlist"></div>
+                        <a class="btn btn-secondary" href="#" role="button">Repos</a> 
+                        <!-- <a class="btn btn-primary" href="#" role="button"><i class="bi bi-heart"></i></a> --> <a href="${user.html_url}" class="btn btn-primary" target="_blank">Visit</a>
+                    <ul id="reposlist"></ul>
                 </div>
             </div>
         `;
