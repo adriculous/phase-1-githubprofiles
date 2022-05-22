@@ -53,14 +53,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function addRepos(repos) {
             const reposEle = document.getElementById("reposlist");
-            repos.forEach((repo) => {
+            for (const repo in repos) {
+                console.log(repo.url)
+            }
+            /* repos.forEach((repo) => {
                 const repoEl = document.createElement("a");
                 repoEl.classList.add("repo");
                 repoEl.href = repo.html_url;
                 repoEl.target = "_blank";
                 repoEl.innerText = repo.name;
                 reposEle.appendChild(repoEl);
-            })
+            }) */
         }
 
         function makeUserCard(user) {
