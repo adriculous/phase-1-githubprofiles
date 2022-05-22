@@ -14,7 +14,7 @@ In every username searched, you will receive the following:
 - The user's number of followers
 - The number of profiles the user is following
 - The number of public repos the user has in their profile
-- The ability to like a profile as a bookmark
+- The list of repos from the profile that can be expanded and collapsed.
 
 ## Future Features
 
