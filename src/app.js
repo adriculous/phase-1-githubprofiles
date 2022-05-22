@@ -8,11 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       4. As a user, I would be able to click on the result profile that would lead me to the actual GitHub profile.
 
+      5. As a user, I would be able to expand the profle box to list out all the public repos.
+
       */
 
     const API_URL = "https://api.github.com/users/";
 
-    const userCard = document.getElementById('userCard');
+    const userCard = document.getElementById('usercard');
     const form = document.getElementById('form');
     const search = document.getElementById('search');
     const notFound = document.getElementById('notfound')
@@ -31,8 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
         })
             .then(resp => resp.json())
             .then(obj => {
-                // userCard(obj);
-                console.log(obj);
+                makeUserCard(obj);
+                // getRepos(username);
             })
             .catch((err) => {
                 notFound.removeAttribute('class')
@@ -40,33 +42,55 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => { err.setAttribute('class', 'hidden') }, 3000)
             })
 
-        /* function userCard(user) {
-            const profileCard = document.getElementsByClassName('userCard')
-              console.log(profileCard)/* `
-            <div class="card">
-                <div>
-                    <img class="avatar card-img-top" src="${user.avatar_url}" alt="${user.name}" />
-                </div>
-                <div class="user-info card-body">
-                    <h3 class="card-title">${user.name}</h3>
-                        <p class="card-text">${user.bio}</p>
+        /* function getRepos(username) {
+            return fetch(API_URL + username + "/repos", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                },
+            })
+                .then(resp => resp.json())
+        }
+
+        function addRepos(repos) {
+            const reposEle = document.getElementById("reposlist");
+            repos.forEach((repo) => {
+                const repoEl = document.createElement("a");
+                repoEl.classList.add("repo");
+                repoEl.href = repo.html_url;
+                repoEl.target = "_blank";
+                repoEl.innerText = repo.name;
+                reposEle.appendChild(repoEl);
+            })
+        } */
+
+        function makeUserCard(user) {
+            const profileCard = `
+        <div class="card">
+            <div>
+                <img class="avatar card-img-top" src="${user.avatar_url}" alt="${user.name}" />
+            </div>
+            <div class="user-info card-body">
+                <h3 class="card-title">${user.name}</h3>
+                    <p class="card-text">${user.bio}</p>
                         <ul class="github-info">
                             <li><strong>Followers:</strong> ${user.followers}</li>
                             <li><strong>Following:</strong> ${user.following}</li>
-                            <li><strong>Repos:</strong> ${user.public.repos}</li>
-                            <li><strong>Twitter:</strong> ${user.twitter}</li>
+                            <li><strong>Repos:</strong> ${user.public_repos}</li>
+                            <li><strong>Twitter:</strong> ${user.twitter_username}</li>
                             <li><strong>Location:</strong> ${user.location}</li>
                         </ul>
-                        <a href="${url} + ${username}" class="btn btn-primary">Visit Profile</a>
+                        <a class="btn btn-primary" href="#" role="button"><i class="bi bi-heart"></i></a> <a href="${user.html_url}" class="btn btn-primary" target="_blank">Visit</a>
+                    <div id="reposlist"></div>
                 </div>
             </div>
-        `; 
- 
-            results.innerHTML = profileCard;
-        } */
+        `;
+
+            userCard.innerHTML = profileCard;
+        }
 
     }
-    // console.log(form)
 
     form.addEventListener("submit", (e) => {
         e.preventDefault();

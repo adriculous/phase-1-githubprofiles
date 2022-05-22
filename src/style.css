@@ -26,12 +26,15 @@ body {
 }
 
 .card {
-    width: 18rem;
-    background-color: lightskyblue;
+    background-color: #CB9E05;
+    border-radius: 20px;
+    padding: 3rem;
+    display: flex;
+    max-width: 800px;
 }
 
 .avatar {
-    border: 10px solid #fff;
+    border: 5px solid #fff;
     border-radius: 50%;
     height: 150px;
     width: 150px;
@@ -41,10 +44,44 @@ body {
     margin-left: 2rem;
 }
 
+
+.user-info ul {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+    max-width: 400px;
+}
+
+.user-info ul li strong {
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+}
+
 .card-title {
     margin-top: 0;
+    color: #664F04;
+    font-weight: bold;
+    text-align: center;
+}
+
+.card-text {
+    font-size: 14px;
+    font-style: italic;
 }
 
 .hidden {
     visibility: hidden;
+}
+
+#notfound h2 {
+    font-family: 'Sigmar One', cursive;
+    font-size: 20px;
+    color: red;
+}
+
+#notfound-message {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 14px;
 }
