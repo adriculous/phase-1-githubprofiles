@@ -2,13 +2,13 @@ document.addEventListener('DOMContentLoaded', () => {
     /* [MY DELIVERABLES]
       1. As a user, I should be able to enter a GitHub username on the input/search field.
       
-      2. As a user, I should be able to click a submit (Search) button.
+      2. As a user, I should be able to click a submit (Search) button and return a result.
       
-      3. As a user, I expect to see the results (or no results) of the username I enter at the DOM.
+      3. As a user, I expect to see the result (or no result) of the username I enter at the DOM. Every GitHub username is unique, there shouldn't be any "duplicate" usernames, so the result should only be 1 profile card.
 
       4. As a user, I would be able to click on the result profile that would lead me to the actual GitHub profile.
 
-      5. As a user, I would be able to expand the profle box to list out all the public repos.
+      5. As a user, I would be able to expand and collapse the profle card to list out the first 30 repos the profile has. Per the GitHub API docs, it only fetches 30 repos as the default, but can be customized to any number using their query
 
       */
 
