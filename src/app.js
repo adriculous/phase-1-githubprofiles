@@ -12,8 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       */
 
-    const API_URL = "https://api.github.com/users/";
+    const API_URL = "https://api.github.com/users/"; // GitHub API URL here
+    const TWITTER_URL = "https://twitter.com/"; // Twitter URL here
 
+    // List all the target elements
     const userCard = document.getElementById('usercard');
     const form = document.getElementById('form');
     const search = document.getElementById('search');
@@ -21,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const notFoundText = document.getElementById('notfound-message')
     notFound.className = 'hidden'
 
+    // Fetch the GitHub profiles here
     function getUser(username) {
         return fetch(API_URL + username, {
             method: "GET",
@@ -32,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(resp => resp.json())
             .then(obj => {
                 makeUserCard(obj);
-                // getRepos(username);
+                getRepos(username);
             })
             .catch((err) => {
                 notFound.removeAttribute('class')
@@ -40,40 +43,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => { err.setAttribute('class', 'hidden') }, 3000)
             })
 
+        // Fetch the user repos here
         function getRepos(username) {
-            fetch(API_URL + username + "/repos", {
+            return fetch(API_URL + username + "/repos", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
-                    "Accept": "application/json",
+                    "Accept": "application/vnd.github.v3+json",
                 },
             })
                 .then(resp => resp.json())
-                .then(() => {
-                    const reposEle = document.getElementById("reposlist")
-                    for (const repo in repos) {
-                        const repoEl = document.createElement("a")
-                        repoEl.classList.add("repo")
-                        repoEl.href = repo.html_url
-                        repoEl.target = "_blank";
-                        repoEl.innerText = repo.name;
-                        reposEle.appendChild(repoEl); repo
-                    }
+                .then((data) => {
+                    showRepos(data);
+                })
+                .catch((err) => {
+                    console.error("This user has this issue: ", error)
+                    setTimeout(() => { err.setAttribute('class', 'hidden') }, 3000)
                 })
         }
 
-        /* function addRepos(repos) {
-            const reposEle = document.getElementById("reposlist");
-            for (const repo in repos) {
+        function showRepos(repos) {
+            const reposEl = document.getElementById("reposlist");
+            repos.forEach((repo) => {
                 const repoEl = document.createElement("a");
                 repoEl.classList.add("repo");
                 repoEl.href = repo.html_url;
                 repoEl.target = "_blank";
                 repoEl.innerText = repo.name;
-                reposEle.appendChild(repoEl);
-            }
-        } */
+                reposEl.appendChild(repoEl);
+            })
+        }
 
+        // For every username search, create a GitHub profile card and appear at the "Results" section
         function makeUserCard(user) {
             const profileCard = `
         <div class="card">
@@ -84,18 +85,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h3 class="card-title">${user.name}</h3>
                     <p class="card-text">${user.bio}</p>
                         <ul class="github-info">
-                            <li><strong>Followers:</strong> ${user.followers}</li>
-                            <li><strong>Following:</strong> ${user.following}</li>
-                            <li><strong>Repos:</strong> ${user.public_repos}</li>
-                            <li><strong>Twitter:</strong> ${user.twitter_username}</li>
-                            <li><strong>Location:</strong> ${user.location}</li>
+                            <li><span class="ghinfo-labels">Followers:</span> ${user.followers}</li>
+                            <li><span class="ghinfo-labels">Following:</span> ${user.following}</li>
+                            <li><span class="ghinfo-labels">Repos:</span> ${user.public_repos}</li>
+                            <li><span class="ghinfo-labels">Twitter:</span> <a href="https://twitter.com/${user.twitter_username}"><span class="twitter">@${user.twitter_username}</span></a></li>
+                            <li><span class="ghinfo-labels">Location:</span> ${user.location}</li>
                         </ul>
-                        <button type="button" class="btn btn-secondary" id="myBtn">Repos</button> <a href="${user.html_url}" class="btn btn-primary" target="_blank">Visit</a>
-                        <div id="myCollapse" class="collapse">
-                            <div id="reposlist" class="card card-body">
-                            (repos list here...)
-                            </div>
+                        <button type="button" id="reposbtn" class="show-repo btn btn-secondary">Repos</button> <a href="${user.html_url}" class="btn btn-primary" target="_blank">Visit</a>
                         </div>
+                        <div id="reposlist" class="hide-repo"></div>
             </div>
         `;
 
@@ -104,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
+    // Search for a GitHub username here
     form.addEventListener("submit", (e) => {
         e.preventDefault();
         console.log(e.target)
@@ -115,9 +114,21 @@ document.addEventListener('DOMContentLoaded', () => {
         form.reset();
     });
 
+    // Expand and collapse the repos list
+    const btn = document.querySelector('reposbtn')
+    // const repos = document.querySelector('reposlist')
+    // const show = document.querySelector('show-repo')
+    // const hide = document.querySelector('hide-repo')
+
+    btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        btn.classList.toggle('show-repo');
+        btn.classList.toggle('hide-repo');
+    })
+
     /* From Bootstrap 5 Components docs (collapse/expand)
     const collapseElementList = document.querySelectorAll('.collapse')
-    const collapseList = [...collapseElementList].map(collapseEl => new bootstrap.Collapse(collapseEl)) */
+    const collapseList = [...collapseElementList].map(collapseEl => new bootstrap.Collapse(collapseEl))
 
     const btn = document.getElementById("myBtn");
     const element = document.getElementById("myCollapse");
@@ -127,6 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     btn.addEventListener("click", () => {
         myCollapse.toggle();
-    });
+    }); */
 
 })

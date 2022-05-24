@@ -8,7 +8,7 @@ body {
 
 .mainheader {
     font-family: 'Sigmar One', cursive;
-    font-size: 24px;
+    font-size: 40px;
     color: #95250a;
     text-shadow: 2px 2px 5px #fce2dc
 }
@@ -28,6 +28,7 @@ body {
 .card {
     background-color: #CB9E05;
     border-radius: 20px;
+    margin: auto;
     padding: 3rem;
     display: flex;
     max-width: 800px;
@@ -36,33 +37,41 @@ body {
 .avatar {
     border: 5px solid #fff;
     border-radius: 50%;
+    background-color: #fff;
     height: 150px;
     width: 150px;
+    margin: auto;
 }
 
 .user-info {
     margin-left: 2rem;
 }
 
-
-.user-info ul {
+.github-info {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     list-style-type: none;
-    padding: 0;
+    margin: auto;
+    padding: 2rem;
     max-width: 400px;
 }
 
-.user-info ul li strong {
+.github-info li {
     font-size: 0.9rem;
     margin-right: 0.5rem;
 }
 
+.ghinfo-labels {
+    font-size: 16px;
+    font-weight: bolder;
+    color:maroon;
+}
+
 .card-title {
     margin-top: 0;
-    color: #664F04;
-    font-weight: bold;
+    color: maroon;
+    font-family: 'Sigmar One', cursive;
     text-align: center;
 }
 
@@ -84,4 +93,29 @@ body {
 #notfound-message {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 14px;
+}
+
+.twitter {
+    color: maroon;
+    text-decoration: none;
+}
+
+.repo {
+    background-color: maroon;
+    border-radius: 5px;
+    display: inline-block;
+    color: white;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+}
+
+.show-repo {
+    display: border-box;
+}
+
+.hide-repo {
+    display: none;
 }
