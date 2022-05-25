@@ -112,10 +112,24 @@ body {
     text-decoration: none;
 }
 
-.show-repo {
+.reposbtn {
+    border: none;
+    outline: none;
+}
+
+.active, .reposbtn:hover {
+    background-color: white;
+}
+
+#reposlist {
+    display: none;
+    overflow: hidden;
+}
+
+/* .show-repo {
     display: border-box;
 }
 
 .hide-repo {
     display: none;
-}
+} */

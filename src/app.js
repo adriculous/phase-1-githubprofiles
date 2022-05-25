@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
       */
 
     const API_URL = "https://api.github.com/users/"; // GitHub API URL here
-    const TWITTER_URL = "https://twitter.com/"; // Twitter URL here
 
     // List all the target elements
     const userCard = document.getElementById('usercard');
@@ -91,9 +90,10 @@ document.addEventListener('DOMContentLoaded', () => {
                             <li><span class="ghinfo-labels">Twitter:</span> <a href="https://twitter.com/${user.twitter_username}"><span class="twitter">@${user.twitter_username}</span></a></li>
                             <li><span class="ghinfo-labels">Location:</span> ${user.location}</li>
                         </ul>
-                        <button type="button" id="reposbtn" class="show-repo btn btn-secondary">Repos</button> <a href="${user.html_url}" class="btn btn-primary" target="_blank">Visit</a>
+                        <a href="${user.html_url}" class="btn btn-primary" target="_blank">Visit</a> <button type="button" class="reposbtn btn btn-secondary">Repos</button> 
                         </div>
-                        <div id="reposlist" class="hide-repo"></div>
+                        <div id="reposlist"></div>
+                        
             </div>
         `;
 
@@ -115,16 +115,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Expand and collapse the repos list
-    const btn = document.querySelector('reposbtn')
-    // const repos = document.querySelector('reposlist')
-    // const show = document.querySelector('show-repo')
-    // const hide = document.querySelector('hide-repo')
 
-    btn.addEventListener("click", (e) => {
+    const collapse = document.getElementsByClass('reposbtn');
+    const reposList = document.getElementById('reposlist');
+
+    collapse.addEventListener("click", () => {
+        if (reposList.style.visibility !== "hidden") {
+            reposList.style.display = "visible";
+        } else {
+            reposList.style.display = "hidden";
+        }
+    })
+
+    /* collapse.addEventListener("click", () => {
+        if (reposList.style.display !== "none") {
+            reposList.style.display = "none";
+        } else {
+            reposList.style.display = "block";
+        }
+    }) */
+
+    /* collapse.addEventListener("click", () => {
+        this.classList.toggle("active");
+        const reposList = this.nextElementSibling;
+        if (reposList.style.display === "block") {
+            reposList.style.display = "none";
+        } else {
+            reposList.style.display = "block";
+        }
+    }); */
+
+    /* const btn = document.getElementById('reposbtn')
+    const element = document.getElementById('collapsible')
+
+    const myCollapsible = new bootstrap.Collapse(element)
+
+    btn.addEventListener("click", () => {
+        myCollapsible.toggle();
+    }) */
+
+
+    /* btn.addEventListener("click", (e) => {
         e.preventDefault();
         btn.classList.toggle('show-repo');
         btn.classList.toggle('hide-repo');
-    })
+    }) */
 
     /* From Bootstrap 5 Components docs (collapse/expand)
     const collapseElementList = document.querySelectorAll('.collapse')
