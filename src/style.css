@@ -112,11 +112,6 @@ body {
     text-decoration: none;
 }
 
-.reposbtn {
-    border: none;
-    outline: none;
-}
-
 .active, .reposbtn:hover {
     background-color: white;
 }

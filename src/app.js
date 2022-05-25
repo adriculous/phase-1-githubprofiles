@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <li><span class="ghinfo-labels">Twitter:</span> <a href="https://twitter.com/${user.twitter_username}"><span class="twitter">@${user.twitter_username}</span></a></li>
                             <li><span class="ghinfo-labels">Location:</span> ${user.location}</li>
                         </ul>
-                        <a href="${user.html_url}" class="btn btn-primary" target="_blank">Visit</a> <button type="button" class="reposbtn btn btn-secondary">Repos</button> 
+                        <a href="${user.html_url}" class="btn btn-primary" target="_blank">Visit</a> <button type="button" class="repobtn btn btn-secondary">Repos</button> 
                         </div>
                         <div id="reposlist"></div>
                         
@@ -116,10 +116,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Expand and collapse the repos list
 
-    const collapse = document.getElementsByClass('reposbtn');
-    const reposList = document.getElementById('reposlist');
+    const btn = document.querySelector('.repobtn');
+    const reposList = document.querySelector('#reposlist');
 
-    collapse.addEventListener("click", () => {
+    btn.addEventListener("click", () => {
         if (reposList.style.visibility !== "hidden") {
             reposList.style.display = "visible";
         } else {
