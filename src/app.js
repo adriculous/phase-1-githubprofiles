@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <li><span class="ghinfo-labels">Twitter:</span> <a href="https://twitter.com/${user.twitter_username}"><span class="twitter">@${user.twitter_username}</span></a></li>
                             <li><span class="ghinfo-labels">Location:</span> ${user.location}</li>
                         </ul>
-                        <a href="${user.html_url}" class="btn btn-primary" target="_blank">Visit</a> <button type="button" class="repobtn btn btn-secondary">Repos</button> 
+                        <button type="button" class="repobtn btn btn-secondary">Repos</button> <a href="${user.html_url}" class="btn btn-primary" target="_blank">Visit</a>  
                         </div>
                         <div id="reposlist"></div>
                         
@@ -120,10 +120,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const reposList = document.querySelector('#reposlist');
 
     btn.addEventListener("click", () => {
-        if (reposList.style.visibility !== "hidden") {
-            reposList.style.display = "visible";
+        if (reposList.style.visibility === "hidden") {
+            reposList.style.visibility = "visible";
         } else {
-            reposList.style.display = "hidden";
+            reposList.style.visibility = "hidden";
         }
     })
 
