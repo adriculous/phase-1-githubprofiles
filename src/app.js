@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })
 
-    /* collapse.addEventListener("click", () => {
+    /* btn.addEventListener("click", () => {
         if (reposList.style.display !== "none") {
             reposList.style.display = "none";
         } else {
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }) */
 
-    /* collapse.addEventListener("click", () => {
+    /* btn.addEventListener("click", () => {
         this.classList.toggle("active");
         const reposList = this.nextElementSibling;
         if (reposList.style.display === "block") {
