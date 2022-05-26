@@ -90,9 +90,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             <li><span class="ghinfo-labels">Twitter:</span> <a href="https://twitter.com/${user.twitter_username}"><span class="twitter">@${user.twitter_username}</span></a></li>
                             <li><span class="ghinfo-labels">Location:</span> ${user.location}</li>
                         </ul>
-                        <button type="button" class="repobtn btn btn-secondary">Repos</button> <a href="${user.html_url}" class="btn btn-primary" target="_blank">Visit</a>  
+                        <button type="button" class="repobtn show-repo btn btn-secondary">Repos</button> <a href="${user.html_url}" class="btn btn-primary" target="_blank">Visit</a>  
                         </div>
-                        <div id="reposlist"></div>
+                        <div id="reposlist" class="hide-repo"></div>
                         
             </div>
         `;
@@ -114,9 +114,16 @@ document.addEventListener('DOMContentLoaded', () => {
         form.reset();
     });
 
-    // Expand and collapse the repos list
+    // Show and hide the repos list
+    const btn = document.querySelector(".show-repo")
+    const reposList = document.querySelector(".hide-repo")
 
-    const btn = document.querySelector('.repobtn');
+    btn.addEventListener("click", (e) => {
+        reposList.classList.toggle("show-repo");
+        reposList.classList.toggle("hide-repo");
+    })
+
+    /* const btn = document.querySelector('.repobtn');
     const reposList = document.querySelector('#reposlist');
 
     btn.addEventListener("click", () => {
@@ -125,11 +132,11 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             reposList.style.visibility = "hidden";
         }
-    })
+    }) */
 
     /* btn.addEventListener("click", () => {
-        if (reposList.style.display !== "none") {
-            reposList.style.display = "none";
+        if (reposList.style.display === "none") {
+            reposList.style.display = "block";
         } else {
             reposList.style.display = "block";
         }

@@ -117,15 +117,15 @@ body {
     color: white;
 }
 
-#reposlist {
+/* #reposlist {
     display: none;
     overflow: hidden;
-}
+} */
 
-/* .show-repo {
+.show-repo {
     display: border-box;
 }
 
 .hide-repo {
     display: none;
-} */
+}
