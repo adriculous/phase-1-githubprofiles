@@ -112,8 +112,9 @@ body {
     text-decoration: none;
 }
 
-.active, .reposbtn:hover {
-    background-color: white;
+.active, .repobtn:hover {
+    background-color: lightslategray;
+    color: white;
 }
 
 #reposlist {
