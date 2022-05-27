@@ -88,9 +88,11 @@ document.addEventListener('DOMContentLoaded', () => {
                             <li><span class="ghinfo-labels">Twitter:</span> <a href="https://twitter.com/${user.twitter_username}"><span class="twitter">@${user.twitter_username}</span></a></li>
                             <li><span class="ghinfo-labels">Location:</span> ${user.location}</li>
                         </ul>
-                        <button type="button" class="repobtn btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#reposlist">Repos</button> <a href="${user.html_url}" class="btn btn-primary" target="_blank">Visit</a>  
+                        <button type="button" id="repobtn" class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#collapseRepos">Repos</button> <a href="${user.html_url}" class="btn btn-primary" target="_blank">Visit</a>  
                         </div>
-                        <div id="reposlist" class="hide-repo"></div>
+                        <div id="collapseRepos" class="collapse hide">
+                            <div id="reposlist"></div>
+                        </div>
                         
             </div>
         `;
@@ -114,79 +116,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Show and hide the repos list
 
-    // Trying Bootstrap 5 collapse again...
-    const reposList = document.querySelector("#reposlist");
+    const reposList = document.getElementById("#collapseRepos");
 
-    reposList.addEventListener("hidden.bs.collapse", () => {
+    reposList.addEventListener("show.bs.collapse", () => {
         alert("For more of this user's repos, please click on the Visit button.")
     })
 
-
-    /* const btn = document.querySelector(".show-repo")
-    const reposList = document.querySelector(".hide-repo")
-
-    btn.addEventListener("click", (e) => {
-        reposList.classList.toggle("show-repo");
-        reposList.classList.toggle("hide-repo");
-    }) */
-
-    /* const btn = document.querySelector('.repobtn');
-    const reposList = document.querySelector('#reposlist');
-
-    btn.addEventListener("click", () => {
-        if (reposList.style.visibility === "hidden") {
-            reposList.style.visibility = "visible";
-        } else {
-            reposList.style.visibility = "hidden";
-        }
-    }) */
-
-    /* btn.addEventListener("click", () => {
-        if (reposList.style.display === "none") {
-            reposList.style.display = "block";
-        } else {
-            reposList.style.display = "block";
-        }
-    }) */
-
-    /* btn.addEventListener("click", () => {
-        this.classList.toggle("active");
-        const reposList = this.nextElementSibling;
-        if (reposList.style.display === "block") {
-            reposList.style.display = "none";
-        } else {
-            reposList.style.display = "block";
-        }
-    }); */
-
-    /* const btn = document.getElementById('reposbtn')
-    const element = document.getElementById('collapsible')
-
-    const myCollapsible = new bootstrap.Collapse(element)
-
-    btn.addEventListener("click", () => {
-        myCollapsible.toggle();
-    }) */
-
-
-    /* btn.addEventListener("click", (e) => {
-        e.preventDefault();
-        btn.classList.toggle('show-repo');
-        btn.classList.toggle('hide-repo');
-    }) */
-
-    /* From Bootstrap 5 Components docs (collapse/expand)
-    const collapseElementList = document.querySelectorAll('.collapse')
-    const collapseList = [...collapseElementList].map(collapseEl => new bootstrap.Collapse(collapseEl))
-
-    const btn = document.getElementById("myBtn");
-    const element = document.getElementById("myCollapse");
-
-    // Create a collapse instance, toggles the collapse element on invocation
-    const myCollapse = new bootstrap.Collapse(element);
-
-    btn.addEventListener("click", () => {
-        myCollapse.toggle();
-    }); */
 
 })
