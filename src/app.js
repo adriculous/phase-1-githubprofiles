@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch((err) => {
                 notFound.removeAttribute('class')
                 notFoundText.textContent = err
-                setTimeout(() => { err.setAttribute('class', 'hidden') }, 3000)
             })
 
         // Fetch the user repos here
@@ -56,8 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     showRepos(data);
                 })
                 .catch((err) => {
-                    console.error("This user has this issue: ", error)
-                    setTimeout(() => { err.setAttribute('class', 'hidden') }, 3000)
+                    console.error("This user profile has a problem: ", error)
                 })
         }
 
