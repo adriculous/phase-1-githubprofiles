@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 notFoundText.textContent = err
             })
 
-        // Fetch the user repos here
+        // Fetch the user repos here. If the GitHub profile has 30 or more repos, the fetch will only return 30 repos as default (GitHub API Docs). Otherwise, it will list all the user's repos if they have only 30 or less.
         function getRepos(username) {
             return fetch(API_URL + username + "/repos", {
                 method: "GET",
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         }
 
-        // For every username search, create a GitHub profile card and appear at the "Results" section
+        // For every username search, create a GitHub profile card and appear at the "Results" section with the most basic info along with the repos list hidden, unless if the "Repos" button is clicked.
         function makeUserCard(user) {
             const profileCard = `
         <div class="card">
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
-    // Search for a GitHub username here
+    // Search a GitHub profile via username
     form.addEventListener("submit", (e) => {
         e.preventDefault();
         console.log(e.target)
@@ -114,12 +114,12 @@ document.addEventListener('DOMContentLoaded', () => {
         form.reset();
     });
 
-    // Show and hide the repos list
+    // Show and hide the repos list (Bootstrap 5 Collapse Component)
 
     const reposList = document.getElementById("#collapseRepos");
 
-    reposList.addEventListener("show.bs.collapse", () => {
-        alert("For more of this user's repos, please click on the Visit button.")
+    reposList.addEventListener("hide.bs.collapse", () => {
+        alert("Please visit the user's profile on GitHub to view more repos.")
     })
 
 
