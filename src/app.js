@@ -8,7 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       4. As a user, I would be able to click on the result profile that would lead me to the actual GitHub profile.
 
-      5. As a user, I would be able to expand and collapse the profle card to list out the first 30 repos the profile has. Per the GitHub API docs, it only fetches 30 repos as the default, but can be customized to any number using their query
+      5. As a user, I would be able to expand and collapse the profle card to list out the first 30 repos the profile has. If the profile has exactly 30 or less repos, the fetch will return all the repos. Per the GitHub API docs, it only fetches 30 repos as the default, but can be customized to any spcific number of repos.
+
+      6. As a user, when I click the "Repos" button again to hide the repos list, I should see a window alert reminding me to visit the actual GitHub profile page to see more of that profile's repos.
 
       */
 
